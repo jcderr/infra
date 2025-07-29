@@ -1,0 +1,7 @@
+# Copy this file to terraform.tfvars and fill in your actual values
+# DO NOT commit terraform.tfvars to version control
+
+do_token = "your_digitalocean_token_here"
+powerdns_api_key = "your_powerdns_api_key_here"
+powerdns_server_url = "http://ip.address"
+home_ip_address = "your.home.ip.address"
