@@ -1,0 +1,25 @@
+resource "powerdns_zone" "$TOKEN" {
+  name = "$TOKEN.com."
+  kind = "Native"
+  nameservers = ["ns1.derrhost.com.", "ns2.derrhost.com."]
+}
+
+resource "powerdns_record" "$TOKEN-apex" {
+  zone = powerdns_zone.$TOKEN.name
+  name = "$TOKEN.com.."
+  type = "A"
+  ttl  = 300
+  records = [
+    "129.146.58.44"  
+  ]
+}
+
+resource "powerdns_record" "$TOKEN-www" {
+  zone = powerdns_zone.$TOKEN.name
+  name = "www.$TOKEN.com."
+  type = "CNAME"
+  ttl = 300
+  records = [
+    powerdns_zone.$TOKEN.name
+  ]
+}
